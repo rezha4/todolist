@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log({projectName:"Default Project",array:[]}),document.querySelector("#new-todo").addEventListener("click",(()=>{document.querySelector("#todo-dialog").showModal()})),document.querySelector("#new-project").addEventListener("click",(()=>{document.querySelector("#project-dialog").showModal()}))})();
