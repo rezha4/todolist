@@ -1,6 +1,6 @@
-const newProject = (projectName) => {
+const newProjectObject = (name) => {
     let array = [];
-    return { projectName, array };
+    return { name, array };
 }
 
-export { newProject }
+export { newProjectObject }
