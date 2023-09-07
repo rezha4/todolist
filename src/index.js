@@ -1,5 +1,8 @@
 import { newProjectObject } from "./newProject";
-import { arrayOfProjects } from "./array";
+import { arrayOfProjects, arrayOfTodos } from "./array";
+import { newTodo } from "./newTodo";
+import { renderTodo } from "./render";
+import { removeAllChild, deleteTodo } from "./clearRender";
 
 const buttonListener = (() => {
     const newTodoBtn = document.querySelector("#new-todo");
@@ -7,7 +10,22 @@ const buttonListener = (() => {
         document.querySelector("#todo-dialog").showModal();
     });
 
+    const dialogTodoBtn = document.querySelector("#todo-dialog button");
+    dialogTodoBtn.addEventListener("click", () => {
+        const title = document.querySelector("input#title").value;
+        const desc = document.querySelector("input#desc").value;
+        const due = document.querySelector("input#due").value;
+        const priority = document.querySelector("input#priority").value;
+        const note = document.querySelector("input#note").value;
+        
+        let inputtedTodo = newTodo(title, desc, due, priority, note);
+
+        arrayOfTodos.push(inputtedTodo);
+        removeAllChild(document.querySelector("ul#todolist"));
+        renderTodo(arrayOfTodos);
+    })
     //todo delete
+
     //todo edit/watch
 
     const newProjectBtn = document.querySelector("#new-project");

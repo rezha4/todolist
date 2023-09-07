@@ -1,3 +1,4 @@
 let arrayOfProjects = [];
+let arrayOfTodos = [];
 
-export { arrayOfProjects }
+export { arrayOfProjects, arrayOfTodos }
