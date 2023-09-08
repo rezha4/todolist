@@ -1,6 +1,16 @@
 import { deleteTodo } from "./clearRender";
 import { removeAllChild } from "./clearRender";
 
+const renderProject = (arr) => {
+    arr.forEach(element => {
+        const li = document.createElement("li");
+
+        li.textContent = `${element.name}`;
+
+        document.querySelector("ul#projectlist").appendChild(li);
+    })
+}
+
 const renderTodo = (array) => {
     array.forEach(element => {
         const li = document.createElement("li");
@@ -18,8 +28,7 @@ const renderTodo = (array) => {
         delBtn.id = "delete";
         delBtn.textContent = "Del";
         delBtn.addEventListener("click", () => {
-            console.log(`${element.title}`);
-            deleteTodo(element.title);
+            deleteTodo(array, element.title);
             removeAllChild(document.querySelector("#todolist"));
             renderTodo(array);
         })
@@ -36,4 +45,4 @@ const renderTodo = (array) => {
     });
 }
 
-export { renderTodo }
+export { renderTodo, renderProject }

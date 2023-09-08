@@ -1,8 +1,16 @@
 import { newProjectObject } from "./newProject";
 import { arrayOfProjects, arrayOfTodos } from "./array";
 import { newTodo } from "./newTodo";
-import { renderTodo } from "./render";
+import { renderTodo, renderProject } from "./render";
 import { removeAllChild, deleteTodo } from "./clearRender";
+
+let masterProjectArr = [];
+let defaultProject = arrayOfProjects("Default Project");
+let defaultTodoArray = arrayOfTodos();
+defaultProject.array.push(defaultTodoArray);
+masterProjectArr.push(defaultProject);
+
+renderProject(masterProjectArr)
 
 const buttonListener = (() => {
     const newTodoBtn = document.querySelector("#new-todo");
@@ -20,12 +28,10 @@ const buttonListener = (() => {
         
         let inputtedTodo = newTodo(title, desc, due, priority, note);
 
-        arrayOfTodos.push(inputtedTodo);
+        defaultTodoArray.push(inputtedTodo);
         removeAllChild(document.querySelector("ul#todolist"));
-        renderTodo(arrayOfTodos);
-    })
-    //todo delete
-
+        renderTodo(defaultProject.array[0]);
+    });
     //todo edit/watch
 
     const newProjectBtn = document.querySelector("#new-project");
@@ -35,9 +41,11 @@ const buttonListener = (() => {
 
     const dialogProjectBtn = document.querySelector("#project-dialog button");
     dialogProjectBtn.addEventListener("click", () => {
-        const newProject = newProjectObject(document.querySelector("#project-dialog input").value);
-        arrayOfProjects.push(newProject);
-        console.log(arrayOfProjects);
+        const newProject = arrayOfProjects(document.querySelector("input#project-title").value);
+        masterProjectArr.push(newProject);
+        removeAllChild(document.querySelector("ul#projectlist"));
+        renderProject(masterProjectArr);
+        console.log(newProject);
     })
 
     // const newProjectBtn = document.querySelector("#project-dialog button");
