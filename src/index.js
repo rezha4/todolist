@@ -43,4 +43,6 @@ const buttonListener = (() => {
         renderProject(masterProjectArr);
         console.log(masterProjectArr);
     })
+
+    
 })();

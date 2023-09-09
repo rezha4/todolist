@@ -38,6 +38,13 @@ const renderTodo = (array) => {
         editBtn.id = "edit";
         editBtn.addEventListener("click", () => {
             document.querySelector("dialog#todo-dialog").showModal();
+            document.querySelector("input#title").value = element.title;
+            document.querySelector("input#desc").value = element.desc;
+            document.querySelector("input#due").value = element.due;
+            document.querySelector("input#priority").value = element.priority;
+            document.querySelector("input#note").value = element.note;
+
+            document.querySelector("button#submit-todo").textContent = "Edit"
         })
 
         li.appendChild(title);
