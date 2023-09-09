@@ -35,6 +35,10 @@ const renderTodo = (array) => {
 
         let editBtn = document.createElement("button");
         editBtn.textContent = "Edit/Watch";
+        editBtn.id = "edit";
+        editBtn.addEventListener("click", () => {
+            document.querySelector("dialog#todo-dialog").showModal();
+        })
 
         li.appendChild(title);
         li.appendChild(titleLabel);
@@ -45,4 +49,12 @@ const renderTodo = (array) => {
     });
 }
 
-export { renderTodo, renderProject }
+const renderEditTodo = (array, todoTitle) => {
+    array.forEach(element => {
+        if (todoTitle === element.title) {
+
+        }
+    })
+}
+
+export { renderTodo, renderProject, renderEditTodo }

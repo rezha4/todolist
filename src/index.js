@@ -1,8 +1,7 @@
-import { newProjectObject } from "./newProject";
 import { arrayOfProjects, arrayOfTodos } from "./array";
 import { newTodo } from "./newTodo";
-import { renderTodo, renderProject } from "./render";
-import { removeAllChild, deleteTodo } from "./clearRender";
+import { renderTodo, renderProject, renderEditTodo } from "./render";
+import { removeAllChild } from "./clearRender";
 
 let masterProjectArr = [];
 let defaultProject = arrayOfProjects("Default Project");
@@ -33,7 +32,6 @@ const buttonListener = (() => {
         renderTodo(defaultProject.array[0]);
     });
     //todo edit/watch
-
     const newProjectBtn = document.querySelector("#new-project");
     newProjectBtn.addEventListener("click", () => {
         document.querySelector("#project-dialog").showModal();
@@ -47,10 +45,4 @@ const buttonListener = (() => {
         renderProject(masterProjectArr);
         console.log(newProject);
     })
-
-    // const newProjectBtn = document.querySelector("#project-dialog button");
-    // newProjectBtn.addEventListener("click", () => {
-    //     const newProjectInsert = newProject(document.querySelector("#project-dialog input").value);
-    // })
-
 })();
