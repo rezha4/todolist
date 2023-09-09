@@ -5,8 +5,6 @@ import { removeAllChild } from "./clearRender";
 
 let masterProjectArr = [];
 let defaultProject = arrayOfProjects("Default Project");
-let defaultTodoArray = arrayOfTodos();
-defaultProject.array.push(defaultTodoArray);
 masterProjectArr.push(defaultProject);
 
 renderProject(masterProjectArr)
@@ -27,9 +25,9 @@ const buttonListener = (() => {
         
         let inputtedTodo = newTodo(title, desc, due, priority, note);
 
-        defaultTodoArray.push(inputtedTodo);
+        defaultProject.array.push(inputtedTodo);
         removeAllChild(document.querySelector("ul#todolist"));
-        renderTodo(defaultProject.array[0]);
+        renderTodo(defaultProject.array);
     });
     //todo edit/watch
     const newProjectBtn = document.querySelector("#new-project");
@@ -43,6 +41,6 @@ const buttonListener = (() => {
         masterProjectArr.push(newProject);
         removeAllChild(document.querySelector("ul#projectlist"));
         renderProject(masterProjectArr);
-        console.log(newProject);
+        console.log(masterProjectArr);
     })
 })();
