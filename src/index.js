@@ -2,15 +2,15 @@ import { arrayOfProjects, arrayOfTodos } from "./array";
 import { newTodo } from "./newTodo";
 import { renderTodo, renderProject, renderEditTodo } from "./render";
 import { removeAllChild } from "./clearRender";
+import { currentProject } from "./global";
 
 let masterProjectArr = [];
-let currentProject;
 let defaultProject = arrayOfProjects("Default Project");
 masterProjectArr.push(defaultProject);
 currentProject = defaultProject;
-console.log(currentProject)
+console.log(currentProject);
 
-renderProject(masterProjectArr)
+renderProject(masterProjectArr);
 
 const buttonListener = (() => {
     const newTodoBtn = document.querySelector("#new-todo");
@@ -30,7 +30,7 @@ const buttonListener = (() => {
 
         defaultProject.array.push(inputtedTodo);
         removeAllChild(document.querySelector("ul#todolist"));
-        renderTodo(masterProjectArr[0].array);
+        renderTodo(currentProject.array);
     });
     //todo edit/watch
     const newProjectBtn = document.querySelector("#new-project");
@@ -47,5 +47,6 @@ const buttonListener = (() => {
         console.log(masterProjectArr);
     })
 
-    
 })();
+
+export { currentProject }
