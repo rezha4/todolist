@@ -4,8 +4,11 @@ import { renderTodo, renderProject, renderEditTodo } from "./render";
 import { removeAllChild } from "./clearRender";
 
 let masterProjectArr = [];
+let currentProject;
 let defaultProject = arrayOfProjects("Default Project");
 masterProjectArr.push(defaultProject);
+currentProject = defaultProject;
+console.log(currentProject)
 
 renderProject(masterProjectArr)
 
@@ -27,7 +30,7 @@ const buttonListener = (() => {
 
         defaultProject.array.push(inputtedTodo);
         removeAllChild(document.querySelector("ul#todolist"));
-        renderTodo(defaultProject.array);
+        renderTodo(masterProjectArr[0].array);
     });
     //todo edit/watch
     const newProjectBtn = document.querySelector("#new-project");

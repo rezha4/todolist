@@ -10,4 +10,10 @@ const deleteTodo = (array, todoTitle) => {
     array.splice(index, 1);
 }
 
-export { removeAllChild, deleteTodo }
+const deleteProject = (array, projectTitle) => {
+    let index = array.findIndex(obj => obj.name == projectTitle);
+
+    array.splice(index, 1);
+}
+
+export { removeAllChild, deleteTodo, deleteProject }
