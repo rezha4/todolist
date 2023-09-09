@@ -28,7 +28,7 @@ const buttonListener = (() => {
         
         let inputtedTodo = newTodo(title, desc, due, priority, note);
 
-        defaultProject.array.push(inputtedTodo);
+        currentProject.array.push(inputtedTodo);
         removeAllChild(document.querySelector("ul#todolist"));
         renderTodo(currentProject.array);
     });

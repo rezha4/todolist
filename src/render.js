@@ -34,8 +34,8 @@ const renderProject = (array) => {
         document.querySelector("ul#projectlist").appendChild(li);
         li.addEventListener("click", () => {
             currentProject = element;
-            console.log("ck")
-            console.log(currentProject.name)
+            removeAllChild(document.querySelector("#todolist"));
+            renderTodo(element.array);
         })
     })
 }
