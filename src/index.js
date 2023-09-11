@@ -28,9 +28,12 @@ const buttonListener = (() => {
         
         let inputtedTodo = newTodo(title, desc, due, priority, note);
 
+        
+
         currentProject.array.push(inputtedTodo);
         removeAllChild(document.querySelector("ul#todolist"));
-        renderTodo(currentProject.array);
+        localStorage.setItem("todoArray", JSON.stringify(currentProject));
+        renderTodo(JSON.parse(localStorage.getItem("todoArray")).array);
     });
     //todo edit/watch
     const newProjectBtn = document.querySelector("#new-project");
