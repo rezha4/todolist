@@ -8,7 +8,7 @@ let masterProjectArr = [];
 let defaultProject = arrayOfProjects("Default Project");
 masterProjectArr.push(defaultProject);
 currentProject = defaultProject;
-console.log(currentProject);
+console.log(masterProjectArr);
 
 renderProject(masterProjectArr);
 
@@ -28,12 +28,10 @@ const buttonListener = (() => {
         
         let inputtedTodo = newTodo(title, desc, due, priority, note);
 
-        
-
         currentProject.array.push(inputtedTodo);
         removeAllChild(document.querySelector("ul#todolist"));
         localStorage.setItem("todoArray", JSON.stringify(currentProject));
-        renderTodo(JSON.parse(localStorage.getItem("todoArray")).array);
+        renderTodo(currentProject.array);
     });
     //todo edit/watch
     const newProjectBtn = document.querySelector("#new-project");
@@ -52,4 +50,4 @@ const buttonListener = (() => {
 
 })();
 
-export { currentProject }
+export { currentProject, masterProjectArr }

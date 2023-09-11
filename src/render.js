@@ -1,7 +1,7 @@
 import { deleteTodo, deleteProject } from "./clearRender";
 import { removeAllChild } from "./clearRender";
 import { currentProject } from "./global";
-
+import { masterProjectArr } from "./index";
 
 const renderProject = (array) => {
     array.forEach(element => {
@@ -33,9 +33,12 @@ const renderProject = (array) => {
         li.appendChild(editBtn);
         document.querySelector("ul#projectlist").appendChild(li);
         li.addEventListener("click", () => {
+            console.log(element.name);
+            let index = masterProjectArr.findIndex(obj => obj.name == element.name)
+            console.log(index)
             currentProject = element;
             removeAllChild(document.querySelector("#todolist"));
-            renderTodo(element.array);
+            renderTodo(masterProjectArr[index].array);
         })
     })
 }
